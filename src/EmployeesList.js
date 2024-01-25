@@ -1,4 +1,3 @@
-// src/components/EmployeesList.js
 import React from 'react'
 import './EmployeesList.css'
 
