@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import EmployeesForm from './EmployeesForm'
+import EmployeesList from './EmployeesList'
+import './App.css'
 
-function App() {
+const App = () => {
+  const [employees, setEmployees] = useState([])
+  const [selectedEmployee, setSelectedEmployee] = useState(null)
+  const addEmployee = (employee) => {
+    setEmployees([...employees, employee])
+  }
+
+  const deleteEmployee = (index) => {
+    const updatedEmployees = [...employees]
+    updatedEmployees.splice(index, 1)
+    setEmployees(updatedEmployees)
+  }
+
+  const editEmployee = (index) => {
+    setSelectedEmployee(employees[index])
+  }
+
+  const updateEmployee = (updatedEmployee) => {
+    const updatedEmployees = [...employees]
+    const index = updatedEmployees.findIndex(
+      (employee) => employee === selectedEmployee,
+    )
+    updatedEmployees[index] = updatedEmployee
+    setEmployees(updatedEmployees)
+    setSelectedEmployee(null)
+  }
+
+  const handleEditClick = (index) => {
+    editEmployee(index)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 style={{ textAlign: 'center' }}>Employees List Project</h1>
+      <EmployeesForm
+        addEmployee={addEmployee}
+        updateEmployee={updateEmployee}
+        selectedEmployee={selectedEmployee}
+      />
+      <EmployeesList
+        employees={employees}
+        deleteEmployee={deleteEmployee}
+        handleEditClick={handleEditClick}
+      />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

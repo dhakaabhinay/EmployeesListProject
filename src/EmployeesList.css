@@ -1,0 +1,44 @@
+/* src/components/EmployeesList.css */
+
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  /* Style the table header */
+  thead {
+    background-color: #3498db; /* Header background color */
+    color: #ffffff; /* Header text color */
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  /* Style alternating rows */
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row background color */
+  }
+  
+  /* Style buttons */
+  button {
+    padding: 8px 12px;
+    margin: 4px;
+    cursor: pointer;
+    color: #ffffff; /* Button text color */
+    border: none;
+    border-radius: 4px;
+  }
+  
+
+  .btn-edit{
+    background-color: rgb(138, 138, 247);
+  }
+  .btn-delete{
+    background-color: red;
+  }
+  
